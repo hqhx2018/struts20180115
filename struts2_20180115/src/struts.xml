@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN" "struts-2.1.7.dtd" >
+<struts>
+<!-- struts-default包中配置了默认的拦截器栈 -->
+<!-- struts-default包中配置了默认的类com.opensymphony.xwork2.ActionSupport -->
+<!-- method=""：默认执行execute的方法 -->
+<package name="default" extends="struts-default" >
+<action name="add" class="com.hqhx.controller.DeptAction" method="addDept">
+<!-- 如果name不给值，默认值是success -->
+<!-- 如果type不给值，默认值是dispatcher -->
+<result name="success" type="dispatcher">success.jsp</result>
+<result name="failed" type="dispatcher">error.jsp</result>
+</action>
+
+<action name="del" class="com.hqhx.controller.DeptAction" method="deleteDept">
+<!-- 如果name不给值，默认值是success -->
+<!-- 如果type不给值，默认值是dispatcher -->
+<result name="success" type="dispatcher">success.jsp</result>
+<result name="failed" type="dispatcher">error.jsp</result>
+</action>
+
+<action name="update" class="com.hqhx.controller.DeptAction" method="updateDept">
+<!-- 如果name不给值，默认值是success -->
+<!-- 如果type不给值，默认值是dispatcher -->
+<result name="success" type="dispatcher">success.jsp</result>
+<result name="failed" type="dispatcher">error.jsp</result>
+</action>
+
+<action name="findDeptByDeptno" class="com.hqhx.controller.DeptAction" method="findDeptByDeptno">
+<!-- 如果name不给值，默认值是success -->
+<!-- 如果type不给值，默认值是dispatcher -->
+<result name="success" type="dispatcher">success.jsp</result>
+<result name="failed" type="dispatcher">error.jsp</result>
+</action>
+
+<action name="list" class="com.hqhx.controller.DeptAction" method="listDept">
+<!-- 如果name不给值，默认值是success -->
+<!-- 如果type不给值，默认值是dispatcher -->
+<result name="success" type="dispatcher">success.jsp</result>
+<result name="failed" type="dispatcher">error.jsp</result>
+</action>
+
+
+</package>
+</struts>
