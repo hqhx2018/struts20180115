@@ -5,15 +5,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Insert title here</title>
-
 </head>
 <body>
+<h1 align="center">用户</h1>
 
-<a href="dept/Dept_addInput">添加部门</a>
-<a href="dept/Dept_delete">删除</a>
-<a href="dept/Dept_update">修改</a>
-<a href="dept/Dept_findDeptById">按编号查询</a>
-<a href="dept/Dept_listDept">查询所有部门</a>
-<a href="user/User_add">添加用户</a>
+<h1>失败页面</h1>
+${requestScope.msg}
 </body>
 </html>
