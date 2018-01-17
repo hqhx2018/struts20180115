@@ -4,6 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<base href="${sessionScope.basePath}"/>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Insert title here</title>
 </head>
@@ -20,6 +21,7 @@ out.print(msg);
 ${requestScope.msg}
 </center>
 <form action="dept/Dept_add" method="post">
+<s:token></s:token>
 <table border="1" cellpadding="0" align="center" cellspacing="0">
 <tr>
 <td>部门编号:</td>

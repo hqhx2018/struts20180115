@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN" "struts-2.1.7.dtd" >
+<struts>
+
+<!-- 配置常量 -->
+<constant name="struts.action.extension" value="do"></constant>
+<constant name="struts.configuration.xml.reload" value="true"></constant>
+<constant name="struts.devMode" value="true"></constant>
+<package name="strutsConfig" extends="struts-default" abstract="true">
+
+
+
+
+<!-- 配置拦截器 -->
+<interceptors>
+<interceptor name="logInterceptor" class="com.hqhx.interceptor.LogInterceptor"></interceptor>
+<interceptor name="loginInterceptor" class="com.hqhx.interceptor.LoginInterceptor"></interceptor>
+
+
+<!-- 定义一个拦截器栈 -->
+<interceptor-stack name="myInterceptorStack">
+<interceptor-ref name="defaultStack"></interceptor-ref>
+<interceptor-ref name="logInterceptor"></interceptor-ref>
+<interceptor-ref name="loginInterceptor"></interceptor-ref>
+</interceptor-stack>
+
+
+<!-- 定义一个拦截器栈 -->
+<interceptor-stack name="myStack">
+<interceptor-ref name="defaultStack"></interceptor-ref>
+<interceptor-ref name="token"></interceptor-ref>
+</interceptor-stack>
+</interceptors>
+
+
+
+<!-- 定义一个全局结果 -->
+<global-results>
+<result name="invalid.token">/error.jsp</result>
+<result name="loginInput">/WEB-INF/User/login.jsp</result>
+</global-results>
+</package>
+
+
+
+
+
+
+</struts>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN" "struts-2.1.7.dtd" >
+<struts>
+
+<package name="login" extends="struts-default" namespace="/login">
+<!-- loginInput -->
+<!-- login -->
+<!-- regInput -->
+<!-- reg -->
+<!-- createImage -->
+<!-- getCount -->
+<action name="login" class="com.hqhx.controller.UserAction" method="login">
+<result name="loginInput">/WEB-INF/User/login.jsp</result>
+<result name="index">/index.jsp</result>
+<result name="invalid.token">/WEB-INF/User/login.jsp</result>
+<interceptor-ref name="defaultStack"></interceptor-ref>
+<interceptor-ref name="token"></interceptor-ref>
+</action>
+
+<action name="*" class="com.hqhx.controller.UserAction" method="{1}">
+<result name="loginInput">/WEB-INF/User/login.jsp</result>
+<result name="regInput">/WEB-INF/User/reg.jsp</result>
+<result name="reg">/WEB-INF/User/login.jsp</result>
+<result name="index">/index.jsp</result>
+</action>
+</package>
+
+
+
+<package name="user" extends="strutsConfig" namespace="/user">
+<!-- user/User_add -->
+<action name="*_*" class="com.hqhx.controller.{1}Action" method="{2}">
+<result name="success">/WEB-INF/{1}/success.jsp</result>
+<result name="failed">/WEB-INF/{1}/error.jsp</result>
+<interceptor-ref name="myInterceptorStack"></interceptor-ref>
+</action>
+</package>
+
+
+
+
+
+
+</struts>

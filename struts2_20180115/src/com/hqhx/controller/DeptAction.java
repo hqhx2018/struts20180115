@@ -48,6 +48,13 @@ public class DeptAction extends ActionSupport implements ModelDriven<Dept>, Serv
 		this.response=arg0;
 	}
 	
+	
+	
+	public String addDeptInput(){
+		
+		return "addDeptInput";
+	}
+	
 	public String add(){
 		System.out.println("--添加部门----");
 		System.out.println("要添加的部门信息"+dept.getDeptno()+" "+dept.getDname()+" "+dept.getLoc());

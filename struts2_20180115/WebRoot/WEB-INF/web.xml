@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
   <display-name>struts2_20180115</display-name>
+      <!--   配置session -->
+  <listener>
+  <listener-class>com.hqhx.listener.MySessionListener</listener-class>
+  </listener>
+  
+    <!-- 配置basePath -->
+  <filter>
+  <filter-name>autoLogin</filter-name>
+  <filter-class>com.hqhx.filter.AutoLoginFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  <filter-name>autoLogin</filter-name>
+  <url-pattern>/*</url-pattern>
+  </filter-mapping>
+ 
+ 
   <!-- 配置struts的核心控制器 -->
   <filter>
   <filter-name>struts2</filter-name>
@@ -10,12 +26,20 @@
   <filter-name>struts2</filter-name>
   <url-pattern>/*</url-pattern>
   </filter-mapping>
+  
+  <!-- 配置basePath -->
+  <filter>
+  <filter-name>basePath</filter-name>
+  <filter-class>com.hqhx.filter.BasePathFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  <filter-name>basePath</filter-name>
+  <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+  
+  
   <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
-    <welcome-file>index.htm</welcome-file>
-    <welcome-file>index.jsp</welcome-file>
-    <welcome-file>default.html</welcome-file>
-    <welcome-file>default.htm</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
+    <welcome-file>main.jsp</welcome-file>
   </welcome-file-list>
 </web-app>
