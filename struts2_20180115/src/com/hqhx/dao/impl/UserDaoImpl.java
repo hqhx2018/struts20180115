@@ -12,8 +12,9 @@ public class UserDaoImpl implements UserDao{
 	
 	@Override
 	public int addUser(User user) {
-		// TODO Auto-generated method stub
-		return 0;
+		String sql="insert into tuser (username,password,imgFileName) values (?,?,?)";
+		int i=db.CUD(sql, user.getUsername(),user.getPassword(),user.getImgFileName());
+		return i;
 	}
 
 	@Override
@@ -42,7 +43,7 @@ public class UserDaoImpl implements UserDao{
 
 	@Override
 	public User findUserByName(String username) {
-		String sql="select id,username,password from tuser where username=?";
+		String sql="select id,username,password,imgFileName from tuser where username=?";
 		List<User> users=db.query(sql, User.class, username);
 		if(users.size()>0){
 			return users.get(0);

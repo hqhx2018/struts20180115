@@ -11,7 +11,6 @@
 <script type="text/javascript" src="js/jquery-1.9.1.js"></script>
 </head>
 <body>
-<s:debug></s:debug>
 <h1 align="center">登录页面</h1>
 <form action="login/login" method="post">
 <s:token></s:token>

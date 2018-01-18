@@ -1,6 +1,7 @@
 package com.hqhx.controller;
 
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintWriter;
@@ -8,6 +9,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.Map;
 import java.util.Set;
+import java.util.UUID;
 
 import javax.imageio.ImageIO;
 import javax.servlet.http.Cookie;
@@ -15,13 +17,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.struts2.ServletActionContext;
 
 import com.hqhx.model.User;
 import com.hqhx.service.UserService;
 import com.hqhx.service.impl.UserServiceImpl;
 import com.hqhx.util.CreateImage;
-import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
@@ -62,7 +64,47 @@ public class UserAction extends ActionSupport implements ModelDriven<User>{
 		System.out.println("----------------------------");
 		return "loginInput";
 	}
+	//跳转到注册页面
+	public String regInput(){
+		return "regInput";
+	}
 	
+	
+	//注册
+	public String reg(){
+		//获取客户端传递过来的信息
+		System.out.println(user);
+		//1.把图片保存到服务器上
+		//动态获取当前项目在服务器的真实路径
+		String relpath=ServletActionContext.getRequest().getServletContext().getRealPath("../");
+		//创建一个目录用于保存图片
+		File upload=new File(relpath,"upload");
+		System.out.println(upload);
+		//判断目录是否存在，如果存在则直接把图片保存到该目录下，不存在则创建在保存
+		if(!upload.exists()){
+			upload.mkdir();
+		}
+		//为了防止重名文件被覆盖，要给文件动态生成一个唯一的名字
+		String newFileName=UUID.randomUUID().toString()+user.getImgFileName().substring(user.getImgFileName().lastIndexOf("."));
+		//构建一个新的文件，并把源文件的数据复制到一个新文件中
+		File newFile=new File(upload,newFileName);
+		//把文件上传到upload目录中
+		try {
+			FileUtils.copyFile(user.getImg(), newFile);
+			//用新文件的名字改掉旧的名字
+			user.setImgFileName(newFileName);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		int i=userService.reg(user);
+		if(i>0){
+			//2.把图片的名字保存到数据库中
+			return "loginInput";
+		}else{
+			msg="注册失败，请重新注册";
+			return "regInput";
+		}
+	}
 	
 	//获取当前在线人数
 		public String getCount() {

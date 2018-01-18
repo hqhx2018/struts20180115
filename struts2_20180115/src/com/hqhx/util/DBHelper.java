@@ -23,10 +23,10 @@ public class DBHelper {
 	
 	static{
 		try {
-			//ÏÈ¼ÓÔØÅäÖÃÎÄ¼ş£¬»ñÈ¡Á¬½ÓÊı¾İ¿âµÄĞÅÏ¢
+			//ï¿½È¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½İ¿ï¿½ï¿½ï¿½ï¿½Ï¢
 			Properties p=new Properties();
 			p.load(Thread.currentThread().getContextClassLoader().getResourceAsStream("jdbc.properties"));
-			//Í¨¹ıkey»ñÈ¡value
+			//Í¨ï¿½ï¿½keyï¿½ï¿½È¡value
 			className=p.getProperty("jdbc.className");
 			url=p.getProperty("jdbc.url");
 			username=p.getProperty("jdbc.username");
@@ -41,15 +41,15 @@ public class DBHelper {
 		}
 	}
 	
-	//»ñÈ¡Á¬½ÓµÄ·½·¨
+	//ï¿½ï¿½È¡ï¿½ï¿½ï¿½ÓµÄ·ï¿½ï¿½ï¿½
 	public Connection getConn(){
-		// 3.ºÍÊı¾İ¿â½¨Á¢Á¬½Ó£¬Í¨¹ıÇı¶¯¹ÜÀíÆ÷»ñÈ¡ºÍÊı¾İ¿âµÄÁ¬½Ó¶ÔÏó
+		// 3.ï¿½ï¿½ï¿½ï¿½İ¿â½¨ï¿½ï¿½ï¿½ï¿½ï¿½Ó£ï¿½Í¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½İ¿ï¿½ï¿½ï¿½ï¿½ï¿½Ó¶ï¿½ï¿½ï¿½
 		Connection conn=null;
 		try {
 			conn = DriverManager.getConnection(url,username,password);
-			System.out.println("Á¬½Ó³É¹¦.....");
+			System.out.println("ï¿½ï¿½ï¿½Ó³É¹ï¿½.....");
 			} catch (SQLException e) {
-				System.out.println("Á¬½ÓÊ§°Ü");
+				System.out.println("ï¿½ï¿½ï¿½ï¿½Ê§ï¿½ï¿½");
 			e.printStackTrace();
 		}
 		return conn;
@@ -61,23 +61,23 @@ public class DBHelper {
 	public int CUD(String sql,Object...params) {
 		Connection conn = getConn();
 		PreparedStatement ps = null;
-		// 1.Ìí¼ÓÇı¶¯°ü
-		// 2.¼ÓÔØÇı¶¯Àà
+		// 1.ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		// 2.ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		try {
-			// 4.Í¨¹ıConnectionÁ¬½Ó¶ÔÏó»ñÈ¡Ò»¸öÔ¤±àÒëÓï¾ä¶ÔÏó
+			// 4.Í¨ï¿½ï¿½Connectionï¿½ï¿½ï¿½Ó¶ï¿½ï¿½ï¿½ï¿½È¡Ò»ï¿½ï¿½Ô¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			ps = conn.prepareStatement(sql);
-			//5.¶¯Ì¬¸øÔ¤±àÒëÓï¾ä¶ÔÏóÉèÖÃ²ÎÊı
+			//5.ï¿½ï¿½Ì¬ï¿½ï¿½Ô¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã²ï¿½ï¿½ï¿½
 			for(int i=0;i<params.length;i++){
 			ps.setObject(i+1, params[i]);
 			}
-			// 5.Í¨¹ıÔ¤±àÒëÓï¾ä¶ÔÏóÖ´ĞĞsqlÓï¾ä
+			// 5.Í¨ï¿½ï¿½Ô¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ï¿½sqlï¿½ï¿½ï¿½
 			int i = ps.executeUpdate();
 			return i;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
-			// 7.ÊÍ·Å×ÊÔ´
+			// 7.ï¿½Í·ï¿½ï¿½ï¿½Ô´
 			close(ps,conn);
 		}
 		return 0;
@@ -91,29 +91,29 @@ public class DBHelper {
 			System.out.println("-----------------");
 			System.out.println(object);
 		}
-		//¶¨ÒåÒ»¸öList<Dept> depts;
+		//ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½List<Dept> depts;
 		List entitys=new ArrayList();
 		Connection conn = getConn();
 		PreparedStatement ps= null;
 		ResultSet rs = null;
-		// 1.Ìí¼ÓÇı¶¯°ü
-		// 2.¼ÓÔØÇı¶¯Àà
+		// 1.ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		// 2.ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		try {
-			// 4.Í¨¹ıConnectionÁ¬½Ó¶ÔÏó»ñÈ¡Ò»¸öÓï¾ä¶ÔÏó
+			// 4.Í¨ï¿½ï¿½Connectionï¿½ï¿½ï¿½Ó¶ï¿½ï¿½ï¿½ï¿½È¡Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			ps = conn.prepareStatement(sql);
-			//5.ÉèÖÃ²ÎÊı
+			//5.ï¿½ï¿½ï¿½Ã²ï¿½ï¿½ï¿½
 			for(int i=0;i<params.length;i++){
 				ps.setObject(i+1, params[i]);
 			}
-			// 5.Í¨¹ıÓï¾ä¶ÔÏóÏòÊı¾İ¿â·¢ËÍ¾²Ì¬sqlÓï¾ä
+			// 5.Í¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½İ¿â·¢ï¿½Í¾ï¿½Ì¬sqlï¿½ï¿½ï¿½
 			rs = ps.executeQuery();
-			//»ñÈ¡ResultSetMetaData¶ÔÏó£¬¸Ã¶ÔÏó´æ´¢ÁË²éÑ¯µÄ½á¹û¼¯ÖĞµÄĞÅÏ¢£¬ÀıÈç½á¹û¼¯µÄÁĞÊı£¬½á¹û¼¯µÄ×Ö¶ÎÃû
+			//ï¿½ï¿½È¡ResultSetMetaDataï¿½ï¿½ï¿½ó£¬¸Ã¶ï¿½ï¿½ï¿½æ´¢ï¿½Ë²ï¿½Ñ¯ï¿½Ä½ï¿½ï¿½ï¿½Ğµï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¶ï¿½ï¿½ï¿½
 			ResultSetMetaData rsmd=rs.getMetaData();
 			int colCount=rsmd.getColumnCount();
 			
-			//È¡³öÊı¾İ
+			//È¡ï¿½ï¿½ï¿½ï¿½ï¿½
 			while(rs.next()){
-				//¶¯Ì¬´´½¨Ò»¸ö¶ÔÏó
+				//ï¿½ï¿½Ì¬ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 				Object object=null;
 				try {
 					object = c.newInstance();
@@ -126,21 +126,22 @@ public class DBHelper {
 				}
 				
 				for(int i=1;i<=colCount;i++){
-					//»ñÈ¡µÚiÁĞµÄÖµ
+					//ï¿½ï¿½È¡ï¿½ï¿½iï¿½Ğµï¿½Öµ
 					Object value=rs.getObject(i);
-					//»ñÈ¡µÚiÁĞµÄ×Ö¶ÎÃû
+					//ï¿½ï¿½È¡ï¿½ï¿½iï¿½Ğµï¿½ï¿½Ö¶ï¿½ï¿½ï¿½
 					String colName=rsmd.getColumnName(i);
-					//¹¹½¨·½·¨Ãû
+					//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 					String methodName="set"+colName.substring(0,1).toUpperCase()+colName.substring(1);
-					//¶¯Ì¬»ñÈ¡·½·¨
+					System.out.println(methodName);
+					//ï¿½ï¿½Ì¬ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½
 					if(value!=null){
 					Method m=c.getMethod(methodName, value.getClass());
-					//Ê¹ÓÃ·´Éä°ÑÈ¡³öµÄÊı¾İ¶¯Ì¬ÉèÖÃµ½object¶ÔÏóÖĞ
+					//Ê¹ï¿½Ã·ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½İ¶ï¿½Ì¬ï¿½ï¿½ï¿½Ãµï¿½objectï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 					m.invoke(object, value);
 					}
 				}
 				
-				//Ìí¼Óµ½¼¯ºÏÖĞ
+				//ï¿½ï¿½Óµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 				entitys.add(object);
 			}
 			return entitys;
@@ -163,7 +164,7 @@ public class DBHelper {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
-			// 7.ÊÍ·Å×ÊÔ´
+			// 7.ï¿½Í·ï¿½ï¿½ï¿½Ô´
 			close(rs,ps,conn);
 		}
 		return null;

@@ -9,5 +9,6 @@
 </head>
 <body>
 <a href="login/loginInput">登录</a>
+<a href="login/regInput">注册</a>
 </body>
 </html>

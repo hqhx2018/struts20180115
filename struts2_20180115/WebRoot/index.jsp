@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@ taglib uri="/struts-tags"  prefix="s"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -10,6 +11,9 @@
 
 </head>
 <body>
+欢迎${sessionScope.user.username} <img width="50" height="50" src="../upload/${sessionScope.user.imgFileName}"/>
+
+
 当前在线人数：<span id="c"></span>
 <br/>
 <a href="dept/Dept_addDeptInput">添加部门</a>
