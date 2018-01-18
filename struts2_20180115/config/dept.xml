@@ -25,11 +25,32 @@
 <result name="invalid.token">/WEB-INF/Dept/addDeptInput.jsp</result>
 </action>
 
+<!-- 导出excel -->
+<action name="Dept_exportExcel" class="com.hqhx.controller.DeptAction" method="exportExcel">
+<!-- 在配置文件中向action中的downloadFile属性传参数值 -->
+<param name="downloadFile">20180118.xls</param>
+<!-- 响应类型写成stream类型 -->
+<result name="success" type="stream">
+<!-- 1.配置参数：配置一个输入流 配置使用附件形式还是直接打开 文件下载下来的保存的名字 设置缓存大小，下载文件的类型 -->
+<!-- 设置下载的文件类型-->
+<param name="contentType">application/vnd.ms-excel</param>
+<!--配置流的来源-->
+<param name="inputName">excel</param>
+<!-- 配置文件的下载方式 -->
+<param name="contentDisposition">attachment;filename="${downloadFile}"</param>
+<!-- 缓冲区的大小 -->
+<param name="bufferSize">5000</param>
+</result>
+</action>
 
+
+
+<!-- dept/Dept_listDeptByPager -->
 <action name="*_*" class="com.hqhx.controller.{1}Action" method="{2}">
 <!-- 如果name不给值，默认值是success -->
 <!-- 如果type不给值，默认值是dispatcher -->
 <result name="addDeptInput" type="dispatcher">/WEB-INF/{1}/addDeptInput.jsp</result>
+<result name="listDeptByPager">/WEB-INF/{1}/listDeptByPager.jsp</result>
 <result name="failed" type="dispatcher">/WEB-INF/{1}/error.jsp</result>
 <result name="addDept" type="dispatcher">/WEB-INF/{1}/addDept.jsp</result>
 <result name="input" type="dispatcher">/WEB-INF/{1}/addDept.jsp</result>

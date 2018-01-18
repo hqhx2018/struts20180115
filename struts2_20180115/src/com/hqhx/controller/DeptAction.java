@@ -1,5 +1,9 @@
 package com.hqhx.controller;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.Map;
 
 import javax.servlet.ServletContext;
@@ -13,7 +17,9 @@ import org.apache.struts2.interceptor.SessionAware;
 import org.apache.struts2.util.ServletContextAware;
 
 import com.hqhx.model.Dept;
-import com.opensymphony.xwork2.ActionContext;
+import com.hqhx.model.Pager;
+import com.hqhx.service.DeptService;
+import com.hqhx.service.impl.DeptServiceImpl;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
@@ -24,7 +30,23 @@ public class DeptAction extends ActionSupport implements ModelDriven<Dept>, Serv
 	private ServletContext application;
 	private HttpServletResponse response;
 	private Dept dept;
+	private Pager<Dept> pager;
+	private DeptService deptService=new DeptServiceImpl();
+	private String downloadFile;
+	private InputStream in=null;
 	
+	public String getDownloadFile() {
+		return downloadFile;
+	}
+	public void setDownloadFile(String downloadFile) {
+		this.downloadFile = downloadFile;
+	}
+	public Pager<Dept> getPager() {
+		return pager;
+	}
+	public void setPager(Pager<Dept> pager) {
+		this.pager = pager;
+	}
 	@Override
 	public void setServletRequest(HttpServletRequest arg0) {
 		// TODO Auto-generated method stub
@@ -95,6 +117,34 @@ public class DeptAction extends ActionSupport implements ModelDriven<Dept>, Serv
 	}
 	
 	
+	
+	//分页查询所有部门
+		public String listDeptByPager() {
+			if(pager==null){
+				pager=new Pager<Dept>();
+			}
+			deptService.listDeptByPager(pager);
+			return "listDeptByPager";
+		}
+	
+	//导出excel
+	public String exportExcel(){
+		File f=deptService.exportExcel();
+		
+		try {
+			in = new FileInputStream(f);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return SUCCESS;
+	}
+	
+	
+	public InputStream getExcel(){
+		
+		return in;
+	}
 	/**
 	 * <interceptor-ref name="modelDriven"/>功能，是把
 	 * getModel()方法返回的对象，放在值栈的栈顶

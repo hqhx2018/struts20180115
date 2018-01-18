@@ -1,0 +1,12 @@
+1.struts的文件上次和下载
+2.java对excel的操作
+3.数据的导入和导出
+4.网络上搜索java操作pdf
+
+
+MIME:
+response.setContentType("image/jpg")
+type="text/css"
+type="text/javascript"
+type="text/plain"
+type="application/"

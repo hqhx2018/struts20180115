@@ -21,7 +21,11 @@
 <a href="dept/Dept_update">修改</a>
 <a href="dept/Dept_findDeptById">按编号查询</a>
 <a href="dept/Dept_listDept">查询所有部门</a>
+<a href="dept/Dept_listDeptByPager">分页查询所有部门</a>
 <a href="user/User_add">添加用户</a>
+<a href="download/2017.tar.gz">下载tar.gz</a>
+<a href="download/0115.png">下载图片</a>
+<a href="download/20180118.txt">下载txt</a>
 
 
 
