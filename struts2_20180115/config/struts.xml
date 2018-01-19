@@ -4,4 +4,5 @@
 <include file="strutsConfig.xml"></include>
 <include file="dept.xml"></include>
 <include file="user.xml"></include>
+<include file="emp.xml"></include>
 </struts>

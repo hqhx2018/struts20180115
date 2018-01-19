@@ -6,6 +6,8 @@
 <constant name="struts.action.extension" value="do"></constant>
 <constant name="struts.configuration.xml.reload" value="true"></constant>
 <constant name="struts.devMode" value="true"></constant>
+<!-- 允许调用静态方法 -->
+<constant name="struts.ognl.allowStaticMethodAccess" value="true"></constant>
 <package name="strutsConfig" extends="struts-default" abstract="true">
 
 

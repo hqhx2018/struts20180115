@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN" "struts-2.1.7.dtd" >
+<struts>
+<!-- struts-default包中配置了默认的拦截器栈 -->
+<!-- struts-default包中配置了默认的类com.opensymphony.xwork2.ActionSupport -->
+<!-- method=""：默认执行execute的方法 -->
+<package name="emp" extends="strutsConfig" namespace="/emp">
+<!-- 转跳到addEmp.jsp -->
+<action name="Emp_addEmpInput" class="com.hqhx.controller.EmpAction" method="addEmpInput">
+<result name="success">/WEB-INF/Emp/addEmp.jsp</result>
+</action>
+
+<!--添加员工-->
+<action name="Emp_addEmp" class="com.hqhx.controller.EmpAction" method="addEmp">
+<result name="success">/index.jsp</result>
+<result name="input">/WEB-INF/Emp/addEmp.jsp</result>
+</action>
+<!--查询所有员工-->
+<action name="Emp_listEmp" class="com.hqhx.controller.EmpAction" method="listEmp">
+<result name="success">/WEB-INF/Emp/listEmp.jsp</result>
+</action>
+
+
+</package>
+</struts>
