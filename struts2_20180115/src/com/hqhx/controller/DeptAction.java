@@ -35,6 +35,8 @@ public class DeptAction extends ActionSupport implements ModelDriven<Dept>, Serv
 	private String downloadFile;
 	private InputStream in=null;
 	
+	
+	
 	public String getDownloadFile() {
 		return downloadFile;
 	}

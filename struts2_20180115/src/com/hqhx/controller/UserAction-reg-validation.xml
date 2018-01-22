@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC
+        "-//Apache Struts//XWork Validator 1.0.2//EN"
+        "http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+<validators>
+<field name="username">
+<field-validator type="requiredstring">
+<message>用户名不能为空</message>
+</field-validator>
+<field-validator type="regex">
+<param name="expression">^[a-zA-Z0-9]{6,8}$</param>
+<message>用户名不符合条件</message>
+</field-validator>
+</field>
+</validators>

@@ -21,6 +21,7 @@
 <result name="loginInput">/WEB-INF/User/login.jsp</result>
 <!-- 注册失败跳转到注册页面 -->
 <result name="reginput">/WEB-INF/User/reg.jsp</result>
+<result name="input">/WEB-INF/User/reg.jsp</result>
 <!-- 如果重复提交则跳转到注册页面并有提示信息 -->
 <result name="invalid.token">/WEB-INF/User/reg.jsp</result>
 <interceptor-ref name="defaultStack"></interceptor-ref>

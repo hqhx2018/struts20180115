@@ -14,7 +14,6 @@
 </head>
 <body>
 
-<s:debug></s:debug>
 
 
 

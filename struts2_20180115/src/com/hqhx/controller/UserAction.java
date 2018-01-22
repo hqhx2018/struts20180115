@@ -19,6 +19,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.interceptor.validation.SkipValidation;
 
 import com.hqhx.model.User;
 import com.hqhx.service.UserService;
@@ -35,6 +36,31 @@ public class UserAction extends ActionSupport implements ModelDriven<User>{
 	private String code;
 	private String isM;
 	private String msg;
+
+//	@Override
+//	public void validate() {
+//		System.out.println("-----UserAction validate---------");
+//	}
+	
+	
+//	//校验reg方法
+//	public void validateReg(){
+//		System.out.println("-----UserAction validateReg-----");
+//		if(user!=null){
+//			if(user.getUsername()==null||user.getUsername().equals("")){
+//				//校验不通过
+//				super.addFieldError("username", "用户名不能为空");
+//			}else{
+//				//用户名必须由字母数字_组成，必须6-8位
+//				String reg="^[a-zA-Z0-9_]{6,8}$";
+//				boolean b=user.getUsername().matches(reg);
+//				if(!b){
+//					//校验不通过
+//					super.addFieldError("username", "用户名必须由字母数字_组成长度为6-8位");
+//				}
+//			}
+//		}
+//	}
 
 	public String getMsg() {
 		return msg;
@@ -107,7 +133,7 @@ public class UserAction extends ActionSupport implements ModelDriven<User>{
 	}
 	
 	//获取当前在线人数
-		public String getCount() {
+	public String getCount() {
 			HttpServletRequest req=ServletActionContext.getRequest();
 			HttpServletResponse resp=ServletActionContext.getResponse();
 			Integer c=(Integer) req.getServletContext().getAttribute("count");

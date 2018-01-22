@@ -10,7 +10,6 @@
 </head>
 <body>
 <h1 align="center">添加部门</h1>
-<s:debug></s:debug>
 <center>
 <%-- <%
 String msg=(String)request.getAttribute("msg"); 
@@ -21,7 +20,6 @@ out.print(msg);
 ${requestScope.msg}
 </center>
 <form action="dept/Dept_add" method="post">
-<s:token></s:token>
 <table border="1" cellpadding="0" align="center" cellspacing="0">
 <tr>
 <td>部门编号:</td>
