@@ -12,7 +12,7 @@ import com.hqhx.service.impl.EmpServiceImpl;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
-public class EmpAction extends ActionSupport implements ModelDriven<Emp>{
+public class EmpAction extends BaseAction implements ModelDriven<Emp>{
 
 	
 	private EmpService empService=new EmpServiceImpl();

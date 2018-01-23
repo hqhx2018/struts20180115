@@ -29,13 +29,13 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
-public class UserAction extends ActionSupport implements ModelDriven<User>{
+public class UserAction extends BaseAction implements ModelDriven<User>{
 
 	private User user;
 	private UserService userService=new UserServiceImpl();
 	private String code;
 	private String isM;
-	private String msg;
+	
 
 //	@Override
 //	public void validate() {
@@ -62,13 +62,7 @@ public class UserAction extends ActionSupport implements ModelDriven<User>{
 //		}
 //	}
 
-	public String getMsg() {
-		return msg;
-	}
-
-	public void setMsg(String msg) {
-		this.msg = msg;
-	}
+	
 
 	public String getCode() {
 		return code;
@@ -127,7 +121,7 @@ public class UserAction extends ActionSupport implements ModelDriven<User>{
 			//2.把图片的名字保存到数据库中
 			return "loginInput";
 		}else{
-			msg="注册失败，请重新注册";
+			super.setMsg("注册失败，请重新注册");
 			return "regInput";
 		}
 	}
@@ -200,7 +194,7 @@ public class UserAction extends ActionSupport implements ModelDriven<User>{
 				String trueCode=(String)req.getSession().getAttribute("trueCode");	
 				if(u==null){
 					//登录失败，提示用户用户名错误，请重新登录
-					msg="用户用户名错误，请重新登录";
+					super.setMsg("用户用户名错误，请重新登录");
 					//请求转发到login.jsp
 					return "loginInput";
 				}else{
@@ -229,13 +223,13 @@ public class UserAction extends ActionSupport implements ModelDriven<User>{
 							return "index";
 						}else{
 							//登录失败，提示验证码错误，请重新登录
-							msg="验证码错误，请重新登录";
+							setMsg("验证码错误，请重新登录");
 							//请求转发到login.jsp
 							return "loginInput";
 						}
 					}else{
 						//登录失败，提示用户密码错误，请重新登录
-						msg="密码错误，请重新登录";
+						setMsg("密码错误，请重新登录");
 						//请求转发到login.jsp
 						return "loginInput";
 					}

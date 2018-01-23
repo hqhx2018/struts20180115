@@ -16,13 +16,45 @@
 <action name="Dept_add" class="com.hqhx.controller.DeptAction" method="add">
 <!-- 如果name不给值，默认值是success -->
 <!-- 如果type不给值，默认值是dispatcher -->
-<result name="addDeptInput" type="dispatcher">/WEB-INF/Dept/addDeptInput.jsp</result>
-<result name="failed" type="dispatcher">/WEB-INF/Dept/error.jsp</result>
-<result name="addDept" type="dispatcher">/WEB-INF/Dept/addDept.jsp</result>
-<result name="input" type="dispatcher">/WEB-INF/Dept/addDept.jsp</result>
+<result name="success" type="redirectAction">
+   <param name="actionName">Dept_listDeptByPager</param>
+   <param name="namespace">dept</param>
+</result>
+<result name="failed" type="dispatcher">/WEB-INF/Dept/addDeptInput.jsp</result>
 <interceptor-ref name="myInterceptorStack"></interceptor-ref>
 <interceptor-ref name="token"></interceptor-ref>
 <result name="invalid.token">/WEB-INF/Dept/addDeptInput.jsp</result>
+</action>
+
+
+<action name="Dept_delete" class="com.hqhx.controller.DeptAction" method="delete">
+<!-- 如果name不给值，默认值是success -->
+<!-- 如果type不给值，默认值是dispatcher -->
+<result name="success" type="redirectAction">
+   <param name="actionName">Dept_listDeptByPager</param>
+   <param name="namespace">dept</param>
+</result>
+<result name="failed" type="dispatcher">/WEB-INF/Dept/error.jsp</result>
+</action>
+
+<action name="Dept_findDeptById" class="com.hqhx.controller.DeptAction" method="findDeptById">
+<!-- 如果name不给值，默认值是success -->
+<!-- 如果type不给值，默认值是dispatcher -->
+<result name="success">/WEB-INF/Dept/updateDept.jsp</result>
+</action>
+
+
+<action name="Dept_update" class="com.hqhx.controller.DeptAction" method="update">
+<!-- 如果name不给值，默认值是success -->
+<!-- 如果type不给值，默认值是dispatcher -->
+<result name="success" type="redirectAction">
+   <param name="actionName">Dept_listDeptByPager</param>
+   <param name="namespace">dept</param>
+</result>
+<result name="failed" type="redirectAction">
+   <param name="actionName">Dept_findDeptById?deptno=${dept.deptno}</param>
+   <param name="namespace">dept</param>
+</result>
 </action>
 
 <!-- 导出excel -->

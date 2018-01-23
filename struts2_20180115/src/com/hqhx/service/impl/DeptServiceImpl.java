@@ -24,27 +24,27 @@ public class DeptServiceImpl implements DeptService{
 	private DeptDao deptDao=new DeptDaoImpl();
 	
 	@Override
-	public int addDept(Dept dept) {
+	public void addDept(Dept dept) {
 		if(dept!=null){
-			return deptDao.addDept(dept);
+			deptDao.addDept(dept);
 		}
-		return 0;
+		
 	}
 
 	@Override
-	public int deleteDeptById(Integer deptno) {
-		if(deptno!=null){
-			return deptDao.deleteDeptById(deptno);
+	public void deleteDeptById(Dept dept) {
+		if(dept!=null){
+			deptDao.deleteDeptById(dept);
 		}
-		return 0;
+	
 	}
 
 	@Override
-	public int updateDept(Dept dept) {
+	public void updateDept(Dept dept) {
 		if(dept!=null){
-			return deptDao.updateDept(dept);
+			deptDao.updateDept(dept);
 		}
-		return 0;
+		
 	}
 
 	@Override

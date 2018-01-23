@@ -24,9 +24,9 @@
 <td>${dept.deptno}</td>
 <td>${dept.dname}</td>
 <td>${dept.loc}</td>
-<td><a href="deptAction?m=deleteDept&deptno=${dept.deptno}">删除</a></td>
+<td><a href="dept/Dept_delete?deptno=${dept.deptno}">删除</a></td>
 <td><input type="button" value="删除" onclick="del(${dept.deptno})" /></td>
-<td><a href="deptAction?m=findDeptById&deptno=${dept.deptno}">修改</a></td>
+<td><a href="dept/Dept_findDeptById?deptno=${dept.deptno}">修改</a></td>
 </tr>
 </c:forEach>
 <tr>
@@ -59,7 +59,7 @@
 function del(deptno){
 	var a=window.confirm("是否要删除？");
 	if(a){
-		location.href="deptAction?m=deleteDept&deptno="+deptno;	
+		location.href="dept/Dept_delete?deptno="+deptno;	
 	}
 }
 </script>

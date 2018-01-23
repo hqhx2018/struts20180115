@@ -12,20 +12,20 @@ public interface DeptDao {
 	 * @param dept�����Ŷ���
 	 * @return���������� >0��ʾ��ӳɹ��������ʾ���ʧ��
 	 */
-	public int addDept(Dept dept);
+	public void addDept(Dept dept);
 
 	/**
 	 * ɾ����
 	 * @param deptno��Ҫɾ��Ĳ��ű��
 	 * @return���������� >0��ʾɾ��ɹ��������ʾɾ��ʧ��
 	 */
-	public int deleteDeptById(Integer deptno);
+	public void deleteDeptById(Dept dept);
 	/**
 	 * �޸Ĳ�����Ϣ
 	 * @param dept���µĲ�����Ϣ
 	 * @return���������� >0��ʾ�޸ĳɹ��������ʾ�޸�ʧ��
 	 */
-	public int updateDept(Dept dept);
+	public void updateDept(Dept dept);
 	
 	
 	/**

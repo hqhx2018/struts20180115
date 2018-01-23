@@ -16,22 +16,22 @@ public class DeptDaoTest {
 	
 	@Test
 	public void testAddDept() {
-		Dept d=new Dept(10,"aa","bb");
-		int i=deptDao.addDept(d);
-		System.out.println(i);
+//		Dept d=new Dept(10,"aa","bb");
+//		int i=deptDao.addDept(d);
+//		System.out.println(i);
 	}
 
 	@Test
 	public void testDeleteDeptById() {
-		int i=deptDao.deleteDeptById(10);
-		System.out.println(i);
+		//deptDao.deleteDeptById(10);
+		
 	}
 
 	@Test
 	public void testUpdateDept() {
-		Dept d=new Dept(10,"²âÊÔ²¿","Î÷°²");
-		int i=deptDao.updateDept(d);
-		System.out.println(i);
+//		Dept d=new Dept(10,"ï¿½ï¿½ï¿½Ô²ï¿½","ï¿½ï¿½ï¿½ï¿½");
+//		int i=deptDao.updateDept(d);
+//		System.out.println(i);
 	}
 
 	@Test
