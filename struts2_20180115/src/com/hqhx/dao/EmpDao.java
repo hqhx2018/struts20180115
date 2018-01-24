@@ -11,9 +11,8 @@ public interface EmpDao {
 	/**
 	 * 添加员工信息
 	 * @param emp：员工对象
-	 * @return：返回整数 >0表示添加成功，否则表示添加失败
 	 */
-	public int addEmp(Emp emp);
+	public void addEmp(Emp emp);
 
 	/**
 	 * 删除员工

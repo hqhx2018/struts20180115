@@ -8,23 +8,33 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.hibernate.Query;
+import org.hibernate.Session;
+
 import com.hqhx.dao.DeptDao;
 import com.hqhx.dao.EmpDao;
 import com.hqhx.model.Dept;
 import com.hqhx.model.Emp;
 import com.hqhx.model.Pager;
 import com.hqhx.util.DBHelper;
+import com.hqhx.util.HibernateUtil;
 
 public class EmpDaoImpl implements EmpDao{
 	private DBHelper db=new DBHelper();
 	private DeptDao deptDao=new DeptDaoImpl();
 	
 	
+	public Session getSession(){
+		return HibernateUtil.getSessionFactory().openSession();
+	}
+	
+	
+	
 	@Override
-	public int addEmp(Emp emp) {
-		String sql="insert into emp (empno,ename,sex,job,mgr,salary,hiredate,deptno) values (?,?,?,?,?,?,?,?)";
-		int i=db.CUD(sql, emp.getEmpno(),emp.getEname(),emp.getSex(),emp.getJob(),emp.getMgr(),emp.getSalary(),emp.getHiredate(),emp.getDept().getDeptno());
-		return i;
+	public void addEmp(Emp emp) {
+		Session session=getSession();
+		session.save(emp);
+		session.beginTransaction().commit();
 	}
 
 	@Override
@@ -41,42 +51,15 @@ public class EmpDaoImpl implements EmpDao{
 
 	@Override
 	public List<Emp> listEmp() {
-		List<Emp> emps=new ArrayList<Emp>();
-		String sql="select empno,ename,sex,job,mgr,salary,hiredate,deptno from emp";
-		Connection conn=db.getConn();
-		PreparedStatement ps=null;
-		ResultSet rs=null;
-		try {
-			ps=conn.prepareStatement(sql);
-			rs=ps.executeQuery();
-			while(rs.next()){
-				int empno=rs.getInt(1);
-				String ename=rs.getString(2);
-				String sex=rs.getString(3);
-				String job=rs.getString(4);
-				int mgr=rs.getInt(5);
-				Double salary=rs.getDouble(6);
-				Date hiredate=rs.getDate(7);
-				int deptno=rs.getInt(8);
-				//根据部门编号查询部门对象
-				Dept dept=deptDao.findDeptById(deptno);
-				//构建员工对象
-				Emp emp=new Emp(empno,ename,sex,job,mgr,salary,dept,hiredate);
-				emps.add(emp);
-			}
-			
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}finally{
-			db.close(rs, ps, conn);
-		}
+		Session session=getSession();
+		Query query=session.createQuery("from Emp");
+		List<Emp> emps=query.list();
+		session.close();
 		return emps;
 	}
 
 	@Override
 	public void listEmpByPager(Pager<Emp> pager) {
-		// TODO Auto-generated method stub
 		
 	}
 

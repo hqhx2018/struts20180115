@@ -47,10 +47,10 @@ public class EmpAction extends BaseAction implements ModelDriven<Emp>{
 	//添加员工
 	public String addEmp(){
 		System.out.println(emp);
-		int i=empService.addEmp(emp);
-		if(i>0){
+		try{
+			empService.addEmp(emp);
 			return SUCCESS;
-		}else{
+		}catch(Exception e){
 			return INPUT;
 		}
 	}

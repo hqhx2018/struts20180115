@@ -73,14 +73,9 @@ public class DeptDaoImpl implements DeptDao{
 	@Override
 	public Dept findDeptById(Integer deptno) {
 		Session session=getSession();
-		Query q=session.createQuery("from Dept where deptno=?");
-		q.setParameter(0, deptno);
-		List<Dept> depts=q.list();
-		if(depts.size()>0){
-			return depts.get(0);
-		}
+		Dept dept=(Dept) session.get(Dept.class, deptno);
 		session.close();
-		return null;
+		return dept;
 	}
 
 	@Override
@@ -92,7 +87,6 @@ public class DeptDaoImpl implements DeptDao{
 		query.setFirstResult(pager.getOffSet());
 		//设置每页显示条数
 		query.setMaxResults(pager.getPageSize());
-		
 		List<Dept> depts=query.list();
 		//把当前页数据设置到pager对象
 		pager.setDatas(depts);

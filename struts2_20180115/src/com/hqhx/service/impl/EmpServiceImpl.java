@@ -13,10 +13,9 @@ public class EmpServiceImpl implements EmpService{
 	private EmpDao empDao=new EmpDaoImpl();
 	
 	@Override
-	public int addEmp(Emp emp) {
+	public void addEmp(Emp emp) {
 		// TODO Auto-generated method stub
-		int i=empDao.addEmp(emp);
-		return i;
+		empDao.addEmp(emp);
 	}
 
 	@Override

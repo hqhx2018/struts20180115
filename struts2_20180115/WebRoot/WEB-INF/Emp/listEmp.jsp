@@ -35,7 +35,7 @@
 <td>所在部门的地址</td>
 </tr>
 
-<s:iterator var="emp" value="emps.{$#this.salary>=5000}">
+<s:iterator var="emp" value="emps">
 <tr>
 <td><s:property value="empno"/></td>
 <td><s:property value="ename"/></td>
